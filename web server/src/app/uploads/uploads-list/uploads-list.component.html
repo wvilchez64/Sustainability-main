@@ -1,0 +1,202 @@
+<form>
+    <div 
+        class="text-center" 
+        *ngIf="isDelete">
+        <span 
+            class="spinner-border" 
+            role="status" 
+            aria-hidden="true"
+        >
+        </span>
+    </div>  
+    <div 
+        class="d-flex justify-content-around mt-4 p-2"
+        >
+        <ngb-pagination
+            [collectionSize]="(total$ | async)!" 
+            [(page)]="uploadsListService.page" 
+            [pageSize]="uploadsListService.pageSize"
+            [disabled]="disabledPage"
+            >
+        </ngb-pagination>
+
+        <div 
+            class="form-group form-inline"
+            >
+            Full text search: 
+            <input 
+                class="form-control ml-2" 
+                type="text" 
+                name="searchTerm" 
+                [disabled]="disabledSearch"
+                [(ngModel)]="uploadsListService.searchTerm"
+                (click)="uploadsListService.clearSearch()"
+                >
+            <span 
+                class="ml-3" 
+                *ngIf="uploadsListService.loading$ | async">Loading...
+            </span>
+        </div>
+    
+        <select 
+            class="custom-select" 
+            style="width: auto" 
+            name="pageSize" 
+            [disabled]="disabledPage"
+            [(ngModel)]="uploadsListService.pageSize"
+            >
+            <option 
+                [ngValue]="4"
+                >
+                4 items per page
+            </option>
+            <option 
+                [ngValue]="6"
+                >
+                6 items per page
+            </option>
+            <option 
+                [ngValue]="8"
+                >
+                8 items per page
+            </option>
+        </select>
+    </div>
+  
+    <div>
+       <table 
+            class="table table-striped table-striped table-sortable">
+            <thead>
+                <tr>
+                    <th 
+                        class="align-middle text-center"
+                        style="width: 5%"
+                        >
+                    </th>
+                    <th     
+                        scope="col" 
+                        sortable="fileName" 
+                        class="align-middle text-left" 
+                        style="width: 20%;"
+                        (sort)="!disabledSort && onSort($event)"
+                        >
+                        Name
+                    </th>
+                    <th     
+                        scope="col" 
+                        sortable="Description" 
+                        class="align-middle text-left" 
+                        style="width: 50%;"
+                        (sort)="!disabledSort && onSort($event)"
+                        >
+                        Description
+                    </th>
+                    <th 
+                        scope="col" 
+                        sortable="dateCreated" 
+                        class="align-middle text-left" 
+                        style="width: 15%;"
+                        (sort)="!disabledSort && onSort($event)"
+                        >
+                        Date Created
+                    </th>
+                    <th 
+                        class="justify-content-between"
+                        style="width: 10%"
+                        >
+                        <input
+                            type="checkbox" 
+                            class="align-middle"
+                            style="width: 40%"
+                            value="{{inactiveInd}}"
+                            [(ngModel)]="inactiveInd"
+                            name="all"
+                            (change)="changedAll($event)"
+                        >
+                        <button 
+                            type="button"  
+                            class="btn btn-secondary btn-sm align-middle"
+                            style="width: 60%"
+                            [disabled]="disabledDelete"
+                            (click)="setInactiveFiles()"
+                            >
+                            <i  
+                                style="color:#ff0000" 
+                                class="fa fa-trash"
+                                >
+                            </i>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr 
+                    *ngFor="let file of files$ | async; let id = index">
+                    <td 
+                        class="align-middle text-center"
+                        style="width: 5%;"
+                        >
+                        <button 
+                            type="button"  
+                            class="btn btn-secondary btn-sm"
+                            [disabled]="disabledDownload"
+                            (click)="downloadFile(id)"
+                            >
+                            <i  
+                                style="color:#d6ec0d" 
+                                class="fa fa-download" 
+                                >
+                            </i>
+                        </button>
+                    </td>
+                    <td
+                        class="align-middle"
+                        style="width: 20%; word-wrap:break-word"
+                        >
+                        <ngb-highlight 
+                            [result]="file.fileName" 
+                            [term]="uploadsListService.searchTerm"
+                            >
+                        </ngb-highlight>
+                    </td>
+                    <td
+                        class="align-middle"
+                        style="width: 50%; word-wrap:break-word" 
+                        >
+                        <ngb-highlight 
+                            [result]="file.description" 
+                            [term]="uploadsListService.searchTerm"
+                            >
+                        </ngb-highlight>
+                    </td>
+                    <td
+                        class="align-middle"
+                        style="width: 15%"
+                        >
+                        <ngb-highlight 
+                            [result]="file.dateCreated"
+                            [term]="uploadsListService.searchTerm"
+                            >
+                        </ngb-highlight>
+                    </td>
+                    <td 
+                        class="align-middle text-center"
+                        style="width: 10%"
+                        >
+                        <div>
+                            <input
+                                type="checkbox" 
+                                value="{{file.inactiveInd}}"
+                                [checked]="file.inactiveInd"
+                                (change)="changed(id)"
+                            >
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+</form>
+
+
+

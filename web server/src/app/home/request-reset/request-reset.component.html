@@ -1,0 +1,64 @@
+<form 
+    action="" 
+    [formGroup]="RequestResetForm" 
+    class="form mt-4"
+    >
+    <div 
+        class="request_form_wrapper">
+        <div 
+            class="container">
+            <div 
+                class="row">
+                <div 
+                    class="col-md-12 col-md-offset-2">
+                    <div 
+                        class="modal-header text-center">
+                        <h3 
+                            class="modal-title w-100">
+                            Forgot Password
+                        </h3>
+                    </div>
+                    <div
+                        class="formsix-pos">
+                        <div 
+                            class="form-group">
+                            <input 
+                                class="form-control form-control-lg" 
+                                placeholder="Email Address"
+                                type="text" 
+                                id="email" 
+                                formControlName="email" 
+                                >
+                            <div 
+                                class="text-danger d-block mt-2"
+                                >
+                                <small                                        
+                                    *ngIf="RequestResetForm.get('email').errors?.required 
+                                        && RequestResetForm.get('email').touched">
+                                    Email is required.
+                                </small>
+                                <small                                       
+                                    *ngIf="RequestResetForm.get('email').errors?.email 
+                                        && RequestResetForm.get('email').touched">
+                                    Invalid email address format.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div 
+                        class="request_btn_wrapper"> 
+                        <div>
+                            <button 
+                                (click)="requestReset()"
+                                [disabled]='RequestResetForm.invalid || RequestResetForm.pending' 
+                                class="btn btn-dark bg-dark btn-block"
+                                >
+                                Reset Password
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

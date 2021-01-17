@@ -1,0 +1,13 @@
+main {
+    display: flex;
+    width: 90%;
+    margin: 5% auto;
+}
+
+main .scheduler {
+    flex: 1 1;
+}
+
+main .event-form {
+    flex: 1 1;
+}

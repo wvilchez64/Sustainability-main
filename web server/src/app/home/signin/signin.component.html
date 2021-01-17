@@ -1,0 +1,184 @@
+<form 
+    [formGroup]="signinForm" 
+    class="form mt-4">
+    <div
+        class="signin_form_wrapper">
+        <div 
+            class="container">
+            <div 
+                class="row">
+                <div 
+                    class="col-md-12 col-md-offset-2">
+                    <div 
+                        class="modal-header text-center">
+                        <h3 
+                            class="modal-title w-100">
+                            Sign in
+                        </h3>
+                    </div>
+                    <div 
+                        class="row signin_wrapper">
+                        <div 
+                            class="col-lg-6 col-md-6 col-xs-6 col-sm-6"> 
+                            <a 
+                                (click)="socialAuth('facebook')"
+                                class="btn btn-primary facebook"
+                                > 
+                                <span>
+                                    Facebook
+                                </span> 
+                                <i 
+                                    class="fa fa-facebook">
+                                </i> 
+                            </a> 
+                        </div>
+                        <div 
+                            class="col-lg-6 col-md-6 col-xs-6 col-sm-6"> 
+                            <a 
+                                (click)="socialAuth('google')"
+                                class="btn btn-primary google-plus"
+                                > 
+                                <span>
+                                    Google 
+                                </span> 
+                                <i 
+                                    class="fa fa-google-plus">
+                                </i> 
+                            </a> 
+                        </div>
+                    </div>
+                    <div
+                        class="formsix-e">
+                        <div 
+                            class="form-group i-email"> 
+                            <input 
+                                #emailInput
+                                formControlName="email"
+                                type="email" 
+                                class="form-control" 
+                                required="" 
+                                id="email" 
+                                placeholder="Email Address"
+                            > 
+                            <div 
+                                class="text-danger d-block mt-2"
+                                >
+                                <small                                        
+                                    *ngIf="signinForm.get('email').errors?.required 
+                                        && signinForm.get('email').touched">
+                                    Email is required.
+                                </small>
+                                <small                                        
+                                    *ngIf="signinForm.get('email').errors?.minlength 
+                                        && signinForm.get('email').touched">
+                                    Email must be at least 7 characters long.
+                                </small>
+                                <small                                       
+                                    *ngIf="signinForm.get('email').errors?.maxlength 
+                                        && signinForm.get('email').touched">
+                                    Email cannot be more than 30 characters long.
+                                </small>
+                                <small                                       
+                                    *ngIf="signinForm.get('email').errors?.email 
+                                        && signinForm.get('email').touched">
+                                    Invalid email address format.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div 
+                        class="formsix-pos">
+                        <div class="form-group i-password"> 
+                            <input 
+                                formControlName="password"
+                                type="password" 
+                                class="form-control" 
+                                required="" 
+                                id="password" 
+                                placeholder="Password"
+                            >
+                            <div 
+                                class="text-danger d-block mt-2"
+                                >
+                                <small                                        
+                                    *ngIf="signinForm.get('password').errors?.required 
+                                        && signinForm.get('password').touched">
+                                    Password is required.
+                                </small>
+                                <small                                        
+                                    *ngIf="signinForm.get('password').errors?.minlength 
+                                        && signinForm.get('password').touched">
+                                    Password must be at least 8 characters long.
+                                </small>
+                                <small                                       
+                                    *ngIf="signinForm.get('password').errors?.maxlength 
+                                        && signinForm.get('password').touched">
+                                    Password cannot be more than 15 characters long.
+                                </small>
+                                <small                                       
+                                    *ngIf="signinForm.get('password').errors?.pattern
+                                        && !signinForm.get('password').errors?.minlength
+                                        && !signinForm.get('password').errors?.maxlength
+                                        && signinForm.get('password').touched">
+                                    Passwords must contain at least one uppercase letter, one lowercase letter, one number.
+                                </small>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div 
+                        class="signin_remember_box"> 
+                        <div>
+                            <!-- Remember me -->
+                            <div class="form-check">
+                                <input 
+                                    value="{{getRemember}}"
+                                    formControlName="remember"
+                                    type="checkbox" 
+                                    class="form-check-input" 
+                                    id="remember"
+                                    name="all"
+                                    >
+                                <label 
+                                    class="form-check-label font-weight-bold" 
+                                    for="remember"
+                                    >
+                                    Remember me
+                                </label>
+                            </div>
+                        </div>
+                        <a 
+                            class="forget_password text-dark font-weight-bold"
+                            routerLink="/home/request-reset" 
+                            routerLinkActive="active"
+                            > 
+                            Forgot Password 
+                        </a> 
+                    </div>
+                    <div
+                        class="signin_btn_wrapper"> 
+                        <button 
+                            class="btn btn-dark bg-dark btn-block"
+                            (click)="localSignIn()"
+                            [disabled]='signinForm.invalid' 
+                            > 
+                            Submit
+                        </button> 
+                    </div>
+                    <div 
+                        class="signin_message">
+                        <p>
+                            Don’t have an account ? 
+                            <a 
+                                class="text-dark font-weight-bold"
+                                routerLink="/home/signup" 
+                                routerLinkActive="active"
+                                > 
+                                Sign up 
+                            </a> 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

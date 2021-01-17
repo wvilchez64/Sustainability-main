@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+  <div 
+    class="md-form active-cyan active-cyan-2 mt-2 mr-2">
+    <input
+        autofocus
+        class="form-control"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+        [(ngModel)]="campaignFilter" 
+        (click)="clearCampaign()"
+        >
+  </div>                                    
+  <div 
+    class="md-form active-cyan active-cyan-2 mt-2">     
+    <select 
+        name="campaign" 
+        class="custom-select" 
+        style="width: 400px"
+        size="2" 
+        [(ngModel)]="campaignSearch" 
+        #campaign="ngModel" 
+        [class.is-invalid]="isCampaignsHasError && campaign.touched"
+        >                            
+        <option 
+          *ngFor="let campaign of campaigns | campaignsFilter : campaignFilter; let id = index"
+          (click)="setCampaign(id)"
+          >{{ campaign.description }}
+        </option>
+    </select>
+    <div 
+      class="text-center" 
+      *ngIf="isCampaignsLoad">
+      <span 
+        class="spinner-border" 
+        role="status" 
+        aria-hidden="true"
+        >
+      </span>
+    </div>  
+  </div> 
+  <div 
+    class="col-md-2">
+    <div class="text-left mt-2"
+      >
+      <button 
+        type="submit" 
+        class="btn btn-secondary"
+        (click)="close()"
+        >
+        <i 
+          class="fa fa-window-close fa-2x align-middle"
+          >
+        </i>
+      </button>
+    </div>
+  </div>
+</div>
+<div
+   *ngIf="campaignId>-1">
+   <sus-goals-list
+      [campaignId]="campaignId" 
+      [userId]="userId"
+      >
+   </sus-goals-list>
+</div>
+
+
+
+

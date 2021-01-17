@@ -1,0 +1,238 @@
+<form 
+    [formGroup]="signupForm" 
+    class="form mt-4"
+    >
+    <div 
+        class="signup_form_wrapper">
+        <div 
+            class="container">
+            <div 
+                class="row">
+                <div 
+                    class="col-md-12 col-md-offset-2">
+                    <div 
+                        class="modal-header text-center">
+                        <h3 
+                            class="modal-title w-100">
+                            Sign up
+                        </h3>
+                    </div>
+                    <div 
+                        class="formsix-pos">
+                        <div 
+                            class="form-group"> 
+                            <input  
+                                #fullNameInput
+                                formControlName="fullName"
+                                type="text"
+                                class="form-control"  
+                                required="" 
+                                id="fullName" 
+                                placeholder="Full Name"
+                            >
+                            <div 
+                                class="text-danger d-block mt-2"
+                                >
+                                <small                                        
+                                    *ngIf="signupForm.get('fullName').errors?.required 
+                                        && signupForm.get('fullName').touched">
+                                    Full Name is required.
+                                </small>
+                                <small                                        
+                                    *ngIf="signupForm.get('fullName').errors?.minlength 
+                                        && signupForm.get('fullName').touched">
+                                    Full Name must be at least 3 characters long.
+                                </small>
+                                <small                                       
+                                    *ngIf="signupForm.get('fullName').errors?.maxlength 
+                                        && signupForm.get('fullName').touched">
+                                    Full Name cannot be more than 40 characters long.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div 
+                        class="formsix-pos">
+                        <div 
+                            class="form-group"> 
+                            <input  
+                                formControlName="userName"
+                                type="text"
+                                class="form-control"  
+                                required="" 
+                                id="userName" 
+                                placeholder="User Name"
+                             >
+                            <div 
+                                class="text-danger d-block mt-2"
+                                >
+                                <small                                        
+                                    *ngIf="signupForm.get('userName').errors?.required 
+                                        && signupForm.get('userName').touched">
+                                    User Name is required.
+                                </small>
+                                <small                                       
+                                    *ngIf="signupForm.get('userName').errors?.lowerCase 
+                                        && signupForm.get('userName').touched">
+                                    Must be lower case
+                                </small>
+                                <small                                        
+                                    *ngIf="signupForm.get('userName').errors?.minlengt 
+                                        && signupForm.get('userName').touched">
+                                    User Name must be at least 3 characters long.
+                                </small>
+                                <small                                       
+                                    *ngIf="signupForm.get('userName').errors?.maxlength 
+                                        && signupForm.get('userName').touched">
+                                    User Name cannot be more than 20 characters long.
+                                </small>
+                                <small                                       
+                                    *ngIf="signupForm.get('userName').errors?.exclude 
+                                        && signupForm.get('userName').touched">
+                                    User name invalid.
+                                </small>
+                                <small                                       
+                                    *ngIf="signupForm.get('userName').errors?.userNameTaken 
+                                        && signupForm.get('userName').touched">
+                                    User Name already taken.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div 
+                        class="formsix-pos">
+                        <div 
+                            class="form-group i-email"> 
+                            <input  
+                                formControlName="email"
+                                type="email" 
+                                class="form-control" 
+                                required="" 
+                                id="email" 
+                                placeholder="Email Address"
+                            >
+                            <div 
+                                class="text-danger d-block mt-2"
+                                >
+                                <small                                        
+                                    *ngIf="signupForm.get('email').errors?.required 
+                                        && signupForm.get('email').touched">
+                                    Email is required.
+                                </small>
+                                <small                                        
+                                    *ngIf="signupForm.get('email').errors?.minlength 
+                                        && signupForm.get('email').touched">
+                                    Email must be at least 7 characters long.
+                                </small>
+                                <small                                       
+                                    *ngIf="signupForm.get('email').errors?.maxlength 
+                                        && signupForm.get('email').touched">
+                                    Email cannot be more than 30 characters long.
+                                </small>
+                                <small                                       
+                                    *ngIf="signupForm.get('email').errors?.email 
+                                        && signupForm.get('email').touched">
+                                    Invalid email address format.
+                                </small>
+                                <small                                       
+                                    *ngIf="signupForm.get('email').errors?.emailTaken 
+                                        && signupForm.get('email').touched">
+                                    Email already taken.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div 
+                        class="formsix-e">
+                        <div 
+                            class="form-group i-password"> 
+                            <input 
+                                formControlName="password"
+                                type="password" 
+                                class="form-control" 
+                                required="" 
+                                id="password" 
+                                name="password"
+                                placeholder="Password"
+                            >
+                            <div 
+                                class="text-danger d-block mt-2"
+                                >
+                                <small                                        
+                                    *ngIf="signupForm.get('password').errors?.required 
+                                        && signupForm.get('password').touched">
+                                    Password is required.
+                                </small>
+                                <small                                        
+                                    *ngIf="signupForm.get('password').errors?.minlength 
+                                        && signupForm.get('password').touched">
+                                    Password must be at least 8 characters long.
+                                </small>
+                                <small                                       
+                                    *ngIf="signupForm.get('password').errors?.maxlength 
+                                        && signupForm.get('password').touched">
+                                    Password cannot be more than 15 characters long.
+                                </small>
+                                <small                                       
+                                    *ngIf="signupForm.get('password').errors?.pattern
+                                        && !signupForm.get('password').errors?.minlength
+                                        && !signupForm.get('password').errors?.maxlength
+                                        && signupForm.get('password').touched">
+                                    Passwords must contain at least one uppercase letter, one lowercase letter, one number.
+                                </small>
+                                <small                                       
+                                    *ngIf="!signupForm.get('password').errors?.pattern
+                                        && !signupForm.get('password').errors?.minlength
+                                        && !signupForm.get('password').errors?.maxlength
+                                        && signupForm.errors?.userNamePassword">
+                                    User Name and Passwords must be different.
+                                </small>
+                            </div>      
+                        </div>
+                    </div>                    
+                    <div 
+                        class="formsix-e">
+                        <div 
+                        class="form-group i-password"> 
+                            <input 
+                                formControlName="confirm"
+                                type="password" 
+                                class="form-control" 
+                                required="" 
+                                id="confirm" 
+                                name="confirm"
+                                placeholder="Confirm Password"
+                            >
+                            <div 
+                                class="text-danger d-block mt-2"
+                                >
+                                <small                                        
+                                    *ngIf="signupForm.get('confirm').errors?.required 
+                                        && signupForm.get('confirm').touched">
+                                    Password confirm is required.
+                                </small>
+                                <small                                       
+                                    *ngIf="signupForm.get('confirm').errors?.mismatch 
+                                        && signupForm.get('confirm').touched">
+                                    Passwords must match.
+                                </small>
+                            </div>      
+                        </div>
+                        <br>
+                        <div 
+                            class="signup_btn_wrapper"> 
+                            <button 
+                                (click)="signUp()"
+                                [disabled]='signupForm.invalid || signupForm.pending'
+                                href="#" 
+                                class="btn btn-dark bg-dark btn-block"
+                                > 
+                                Submit 
+                            </button> 
+                        </div>
+                    </div>
+                </div>    
+            </div>    
+        </div>    
+    </div>
+</form>

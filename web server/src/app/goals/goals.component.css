@@ -1,0 +1,36 @@
+body {
+	background: #fafafa url(https://jackrugile.com/images/misc/noise-diagonal.png);
+	color: #444;
+	font: 100%/30px 'Helvetica Neue', helvetica, arial, sans-serif;
+	text-shadow: 0 1px 0 #fff;
+}
+
+strong {
+	font-weight: bold; 
+}
+
+em {
+	font-style: italic; 
+}
+
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none; /* This makes sure that we can still click outside of the modal to close it */
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    max-width:inherit; /* For Bootstrap 4 - to avoid the modal window stretching full width */
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events: all;
+}

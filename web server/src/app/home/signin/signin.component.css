@@ -1,0 +1,157 @@
+
+.signin_form_wrapper {
+    float: left;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    background-color: #fff
+}
+
+.signin_wrapper {
+    float: left;
+    width: 100%;
+    background: #fff;
+    padding: 20px
+}
+
+.signin_wrapper a.btn {
+    color:  #fff;
+    width: 100%;
+    height: 50px;
+    padding: 6px 25px;
+    line-height: 36px;
+    margin-bottom: 20px;
+    text-align: left;
+    border-radius: 5px;
+    background: #3b5998;
+    font-size: 16px;
+    border: 1px solid #3b5998
+}
+
+.signin_wrapper a i {
+    float: right;
+    margin: 0;
+    line-height: 35px
+}
+
+.signin_wrapper a.google-plus {
+    background: #db4c3e;
+    border: 1px solid  #bd4033
+}
+
+.signin_wrapper h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    color: #111;
+    line-height: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative
+}
+
+.signin_wrapper .formsix-pos,
+.formsix-e {
+    position: relative
+}
+
+.form-group {
+    margin-bottom: 15px
+}
+
+.signin_wrapper .form-control {
+    height: 53px;
+    padding: 15px 20px;
+    font-size: 14px;
+    line-height: 24px;
+    border: 1px solid #f0eeee;
+    border-radius: 3px;
+    box-shadow: none;
+    font-family: 'Roboto';
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    background-color: #f0eeee
+}
+
+.signin_remember_box {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: rgb(66, 65, 65)
+}
+
+.signin_remember_box .control {
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0
+}
+
+.signin_remember_box .control input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0
+}
+
+.signin_remember_box .control__indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border: 1px solid  rgb(66, 65, 65)
+}
+
+.signin_remember_box .forget_password {
+    float: right;
+    color: #000000;
+    line-height: 12px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.signin_btn_wrapper {
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e4e4e4
+}
+
+.signin_btn_wrapper a.signin_btn {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.signin_message p {
+    text-align: center;
+    font-size: 16px;
+    margin: 0
+}
+
+p {
+    color:  rgb(66, 65, 65);
+    font-size: 14px;
+    line-height: 24px
+}
+.signin_message_1 {
+    color:  #bd4033;
+    font-size: 18px;
+}
+
+.signin_wrapper a.signin_btn:hover {
+    background-color:  rgb(66, 65, 65);
+    border-color:  rgb(66, 65, 65)
+}
+
+.signin_wrapper a.btn:hover {
+    background-color: #2c4272;
+    border-color: #2c4272
+}
+
+.signin_wrapper a.google-plus:hover {
+    background: #bd4033;
+    border-color: #bd4033
+}
